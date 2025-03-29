@@ -29,9 +29,9 @@ jobs:
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
 
     - name: Repository Dispatch
-      uses: peter-evans/repository-dispatch@v1
+      uses: peter-evans/repository-dispatch@v3
       with:
         token: ${{ secrets.PAT }}
-        repository: ${{ secrets.DOCKERHUB_USERNAME }}/argocd-node-app-config
+        repository: tsu98/argocd-node-app-config
         event-type: new-image
-        client-payload: '{"image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
+        client-payload: '{"image": "tsu98/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
