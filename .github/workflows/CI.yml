@@ -9,7 +9,7 @@ on:
 permissions:
   contents: read
   actions: write
-  
+
 env:
   IMAGE_NAME: examplenode-dev
   
@@ -36,7 +36,7 @@ jobs:
     - name: Repository Dispatch
       uses: peter-evans/repository-dispatch@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT }}
         repository: ${{ github.actor }}/argocd-node-app-config
         event-type: new-image
         client-payload: '{"image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
